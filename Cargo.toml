@@ -1,0 +1,26 @@
+[package]
+name = "sharc_rs"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.21", features = ["extension-module"] }
+ndarray = "0.15"           # For numerical computations
+numpy = "0.21"             # NumPy interop
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[dependencies.pyo3]
+version = "0.21"
+features = ["extension-module"]
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+python-source = "."
+module-name = "sharc_rs._core"
